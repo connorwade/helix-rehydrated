@@ -2,19 +2,19 @@
 // Attach styles
 // Push only what needs to be pushed
 
-const priorityQueue = [
-  { task: hydratePage, withWorker: false },
-  { task: buildLCPBlock, withWorker: false },
-];
-
 async function hydratePage() {
-  const observer = new MutationObserver((mutations) => {
+  const observer = new MutationObserver(async (mutations) => {
     for (let mutation of mutations) {
       for (let node of mutation.addedNodes) {
         if (!(node instanceof HTMLElement)) continue;
 
-        if (node.matches('header')) {
-            
+        if (node.matches("header")) {
+          const res = await fetch("/nav.plain.html");
+          const html = await res.text();
+
+          let header = document.querySelector("header");
+          header.classList.add("header-wrapper");
+          header.innerHTML = html;
         }
 
         if (
@@ -69,11 +69,9 @@ function buildLCPBlock() {
   parent.prepend(section);
 }
 
-// function runQueue() {
-//   while (priorityQueue.length) {
-//     const { task } = priorityQueue.shift();
-//     task();
-//   }
-// }
+function createHTMLFromResponse(html) {
+  let parser = new DOMParser();
 
-// runQueue();
+  let element = parser.parseFromString(html, "text/html");
+  return element;
+}
