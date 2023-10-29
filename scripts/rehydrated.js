@@ -1,21 +1,21 @@
 // Paint major content
 // Attach styles
 // Push only what needs to be pushed
-
+let flag = true;
 async function hydratePage() {
   const observer = new MutationObserver(async (mutations) => {
     for (let mutation of mutations) {
       for (let node of mutation.addedNodes) {
         if (!(node instanceof HTMLElement)) continue;
 
-        if (node.matches("header")) {
-          const res = await fetch("/nav.plain.html");
-          const html = await res.text();
+        // if (node.matches("header")) {
+        //   const res = await fetch("/nav.plain.html");
+        //   const html = await res.text();
 
-          let header = document.querySelector("header");
-          header.classList.add("header-wrapper");
-          header.innerHTML = html;
-        }
+        //   let header = document.querySelector("header");
+        //   header.classList.add("header-wrapper");
+        //   header.innerHTML = html;
+        // }
 
         if (
           node.matches('img[loading="lazy"]') &&
@@ -27,6 +27,16 @@ async function hydratePage() {
         if (node.matches("main p picture:first-of-type")) {
           buildLCPBlock();
         }
+
+        if (node.matches(".cards") && !node.dataset.rendered) {
+          flag = false;
+          const { Block } = await import("../blocks-dev/Block.js");
+          const { makeCards } = await import("../blocks-dev/Cards/Cards.js");
+          loadCSS("/blocks/cards/cards.css");
+          const cards = makeCards(node);
+          const block = new Block("cards", [cards]);
+          block.render(node);
+        }
       }
     }
   });
@@ -35,6 +45,15 @@ async function hydratePage() {
 }
 
 hydratePage();
+
+function loadCSS(script) {
+  const link = Object.assign(document.createElement("link"), {
+    rel: "stylesheet",
+    type: "text/css",
+    href: `${script}`,
+  });
+  document.head.appendChild(link);
+}
 
 function elementOverlapsViewport(el) {
   let rect = el.getBoundingClientRect();
