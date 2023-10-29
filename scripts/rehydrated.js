@@ -43,7 +43,7 @@ async function hydratePage() {
         if (node.matches(".cards") && !node.dataset.rendered) {
           const { Block } = await import("../blocks-dev/Block.js");
           const { makeCards } = await import("../blocks-dev/Cards/Cards.js");
-          loadCSS("/blocks/cards/cards.css");
+          // loadCSS("/blocks-dev/cards/cards.css");
           const cards = makeCards(node);
           const block = new Block("cards", [cards]);
           block.render(node);
@@ -53,7 +53,7 @@ async function hydratePage() {
           const { makeColumns } = await import(
             "../blocks-dev/Columns/Columns.js"
           );
-          loadCSS("/blocks/columns/columns.css");
+          // loadCSS("/blocks-dev/columns/columns.css");
           makeColumns(node);
         }
 

@@ -6,3 +6,6 @@ package.json
 package-lock.json
 test/*
 blocks-dev/*
+.parcel-cache/*
+/blocks/
+/node_modules/
