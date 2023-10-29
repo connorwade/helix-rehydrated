@@ -1,7 +1,6 @@
 // Paint major content
 // Attach styles
 // Push only what needs to be pushed
-let flag = true;
 async function hydratePage() {
   const observer = new MutationObserver(async (mutations) => {
     for (let mutation of mutations) {
