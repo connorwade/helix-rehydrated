@@ -35,9 +35,11 @@ class Cards {
   constructor(children) {
     this.children = children.map((card) => card.render());
     this.html = `
+    <div class="cards block">
     <ul>
         ${this.children.join("")}
     </ul>
+    </div>
     `;
   }
 
