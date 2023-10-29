@@ -124,10 +124,10 @@ export function makeCards(node) {
 - The side-effect is that developers feel a lot more organized with this.
 
 ### What do I still need to do?
-- [-] Resolve Static HTML fetching
-- [-] Finish Block cleanup
-- [-] Image optimization code
-- [-] Manipulate the general text elements to match AEM Edge's output
-- [-] Ensure we are optimizing code by walking down the tree (viewport elements first & then the rest)
-- [-] Possibly push block creation to web-workers who push it back to the main thread. Though, it seems like there aren't any advantages to doing so right now.
-- [-] Development bundling - minification is a must
+- [ ] Resolve Static HTML fetching
+- [ ] Finish Block cleanup
+- [ ] Image optimization code
+- [x] Manipulate the general text elements to match AEM Edge's output
+- [ ] Ensure we are optimizing code by walking down the tree (viewport elements first & then the rest)
+- [ ] Possibly push block creation to web-workers who push it back to the main thread. Though, it seems like there aren't any advantages to doing so right now.
+- [/] Development bundling - minification is a must
