@@ -9,7 +9,7 @@
 
 .cards > ul > li {
   border: 1px solid var(--highlight-background-color);
-  background-color: var(--background-color)
+  background-color: var(--background-color);
 }
 
 .cards .cards-card-body {
@@ -25,6 +25,22 @@
 }
 
 .cards > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Loading Coverage */
+.cards:not([data-rendered]) > div {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 16px;
+}
+
+.cards:not([data-rendered]) > div > div img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;

@@ -35,6 +35,9 @@ async function hydratePage() {
             node.firstElementChild,
             node.firstElementChild.nextElementSibling,
           ]);
+          document
+            .querySelector(".hero-wrapper")
+            .classList.add("hero-container");
         }
 
         if (node.matches(".cards") && !node.dataset.rendered) {

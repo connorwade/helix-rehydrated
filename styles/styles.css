@@ -278,3 +278,27 @@ main .section.highlight {
   background-color: var(--highlight-background-color);
 } */
 
+main > div {
+  padding: 64px 16px;
+}
+
+@media (min-width: 600px) {
+  main > div {
+    padding: 64px 32px;
+  }
+}
+
+@media (min-width: 900px) {
+  main > div > div:not(.section) {
+    max-width: 1200px;
+    margin: auto;
+  }
+}
+
+main > .section.highlight {
+  background-color: var(--highlight-background-color);
+}
+
+.section-metadata {
+  display: none;
+}
