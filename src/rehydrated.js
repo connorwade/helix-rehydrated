@@ -1,7 +1,16 @@
-// Paint major content
-// Attach styles
-// Push only what needs to be pushed
 document.querySelector("html").lang = "en";
+
+async function createLCP(node) {
+  const { Block } = await import("./blocks/Block.js");
+  const { createHero } = await import("./blocks/Hero/Hero.js");
+  const { hero, picture } = new createHero(node);
+  const block = new Block("hero", [hero]);
+  block.prepend(node.parentElement, picture, [
+    node.firstElementChild,
+    node.firstElementChild.nextElementSibling,
+  ]);
+  document.querySelector(".hero-wrapper").classList.add("hero-container");
+}
 
 async function hydratePage() {
   const observer = new MutationObserver(async (mutations) => {
@@ -9,20 +18,11 @@ async function hydratePage() {
       for (let node of mutation.addedNodes) {
         if (!(node instanceof HTMLElement)) continue;
 
-        // if (node.matches("header")) {
-        //   const res = await fetch("/nav.plain.html");
-        //   const html = await res.text();
-
-        //   let header = document.querySelector("header");
-        //   header.classList.add("header-wrapper");
-        //   header.innerHTML = html;
-        // }
-
         if (
-          (node.matches('img[loading="lazy"]') &&
-            elementOverlapsViewport(node)) ||
+          node.matches('.hero img[loading="lazy"]') ||
           node.matches(".columns img")
         ) {
+          console.log("REMOVED LOADING");
           node.removeAttribute("loading");
         }
 
@@ -30,33 +30,27 @@ async function hydratePage() {
           !document.querySelector(".hero") &&
           node.matches("main > div:first-of-type")
         ) {
-          const { Block } = await import("./blocks/Block.js");
-          const { createHero } = await import("./blocks/Hero/Hero.js");
-          const { hero, picture } = new createHero(node);
-          const block = new Block("hero", [hero]);
-          block.prepend(node.parentElement, picture, [
-            node.firstElementChild,
-            node.firstElementChild.nextElementSibling,
-          ]);
-          document
-            .querySelector(".hero-wrapper")
-            .classList.add("hero-container");
+          console.log("HERO CREATED");
+          await createLCP(node);
         }
 
         if (node.matches(".cards") && !node.dataset.rendered) {
+          console.log("CARDS CREATED");
           const { Block } = await import("./blocks/Block.js");
           const { makeCards } = await import("./blocks/Cards/Cards.js");
-          const { cards, pictures } = makeCards(node);
+          const { cards, pics } = makeCards(node);
           const block = new Block("cards", [cards]);
-          block.render(node, pictures);
+          block.renderWithPictures(node, pics);
         }
 
         if (node.matches(".columns") && !node.dataset.rendered) {
+          console.log("COLUMNS CREATED");
           const { makeColumns } = await import("./blocks/Columns/Columns.js");
           makeColumns(node);
         }
 
         if (node.matches(".columns > div")) {
+          console.log("COLUMNS BUTTONS");
           const link = node.querySelector("a");
           link.classList.add("button");
           if (link.parentElement instanceof HTMLParagraphElement) {
@@ -69,6 +63,7 @@ async function hydratePage() {
         }
 
         if (node.matches(".section-metadata")) {
+          console.log("METADATA PARSED");
           let children = [...node.children];
 
           children.forEach((obj) => {
@@ -82,16 +77,19 @@ async function hydratePage() {
         }
 
         if (node.matches("main > div")) {
+          console.log("SECTION ADDED");
           node.classList.add("section");
         }
 
         if (node.matches("footer")) {
+          console.log("FOOTER RENDERED");
           const { getHTML } = await import("./blocks/getHTML.js");
           const { Footer } = await import("./blocks/Footer/footer.js");
           await getHTML("/footer.plain.html", node, Footer);
         }
 
         if (node.matches("header")) {
+          console.log("HEADER ADDED");
           const { getHTML } = await import("./blocks/getHTML.js");
           const { Header } = await import("./blocks/Header/header.js");
           await getHTML("/nav.plain.html", node, Header);
@@ -105,10 +103,8 @@ async function hydratePage() {
         }
 
         if (node.childNodes.length === 0 && node instanceof HTMLDivElement) {
+          console.log("EMPTY NODES REMOVED");
           node.remove();
-        }
-
-        if (node.matches(".icon")) {
         }
       }
     }
@@ -126,22 +122,4 @@ function loadCSS(script) {
     href: `${script}`,
   });
   document.head.appendChild(link);
-}
-
-function elementOverlapsViewport(el) {
-  let rect = el.getBoundingClientRect();
-
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-function createHTMLFromResponse(html) {
-  let parser = new DOMParser();
-
-  let element = parser.parseFromString(html, "text/html");
-  return element;
 }

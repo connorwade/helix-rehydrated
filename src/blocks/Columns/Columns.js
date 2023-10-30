@@ -16,5 +16,4 @@ export function makeColumns(node) {
   }
 
   node.dataset.rendered = "true";
-  console.log(node, node.parentElement);
 }
