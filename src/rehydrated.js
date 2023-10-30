@@ -32,9 +32,9 @@ async function hydratePage() {
         ) {
           const { Block } = await import("./blocks/Block.js");
           const { createHero } = await import("./blocks/Hero/Hero.js");
-          const hero = new createHero(node);
+          const { hero, picture } = new createHero(node);
           const block = new Block("hero", [hero]);
-          block.prepend(node.parentElement, [
+          block.prepend(node.parentElement, picture, [
             node.firstElementChild,
             node.firstElementChild.nextElementSibling,
           ]);
@@ -46,9 +46,9 @@ async function hydratePage() {
         if (node.matches(".cards") && !node.dataset.rendered) {
           const { Block } = await import("./blocks/Block.js");
           const { makeCards } = await import("./blocks/Cards/Cards.js");
-          const cards = makeCards(node);
+          const { cards, pictures } = makeCards(node);
           const block = new Block("cards", [cards]);
-          block.render(node);
+          block.render(node, pictures);
         }
 
         if (node.matches(".columns") && !node.dataset.rendered) {

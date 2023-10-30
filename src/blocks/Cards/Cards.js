@@ -1,20 +1,14 @@
 class Card {
-  imgSrc = "";
-  imgAlt = "";
-  imgWidth = "";
   title = "";
   description = "";
 
-  constructor(title, description, imgSrc, imgAlt, imgWidth) {
+  constructor(title, description) {
     this.title = title;
     this.description = description;
-    this.imgSrc = imgSrc;
-    this.imgAlt = imgAlt;
-    this.imgWidth = imgWidth;
     this.html = `
     <li>
         <div class="cards-card-image">
-         <img src="${this.imgSrc}" alt="${this.imgAlt}" width="${this.imgWidth}" loading="lazy"/>
+         <picture></picture>
         </div>
         <div class="cards-card-body">
           <p><strong>${this.title}</strong></p>
@@ -54,22 +48,15 @@ class Cards {
  */
 export function makeCards(node) {
   let cards = [];
+  let pictures = [];
   node.querySelectorAll(":scope > div").forEach((card) => {
     let pNode = card.querySelectorAll("p");
     /**
      * @type {HTMLImageElement}
      */
-    let imgNode = card.querySelector("img");
+    pictures.push(card.querySelector("picture"));
 
-    cards.push(
-      new Card(
-        pNode[0].innerText,
-        pNode[1].innerText,
-        imgNode.src,
-        imgNode.alt,
-        750
-      )
-    );
+    cards.push(new Card(pNode[0].innerText, pNode[1].innerText));
   });
-  return new Cards(cards);
+  return { cards: new Cards(cards), pics: pictures };
 }

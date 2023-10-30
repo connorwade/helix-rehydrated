@@ -21,13 +21,29 @@ export class Block {
 
   /**
    *
-   * @param {HTMLElement} node
-   * @param {HTMLElement[]} nodesToDelete
+   * @param {HTMLElement} nodeToSwap
+   * @param {HTMLPictureElement} pictureNodes
    */
-  prepend(node, nodesToDelete) {
+  renderWithPictures(nodeToSwap, pictureNodes) {
     const element = document.createElement("div");
     element.className = `${this.type}-wrapper`;
     element.innerHTML = this.html;
+    element.querySelectorAll("picture").forEach((el, i) => {
+      el.replaceWith(pictureNodes[i]);
+    });
+    nodeToSwap.replaceWith(element);
+  }
+
+  /**
+   *
+   * @param {HTMLElement} node
+   * @param {HTMLElement[]} nodesToDelete
+   */
+  prepend(node, picture, nodesToDelete) {
+    const element = document.createElement("div");
+    element.className = `${this.type}-wrapper`;
+    element.innerHTML = this.html;
+    element.querySelector("picture").replaceWith(picture);
     nodesToDelete.forEach((nodeToDelete) => {
       nodeToDelete.remove();
     });
