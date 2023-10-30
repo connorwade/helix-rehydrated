@@ -8,12 +8,31 @@ main .hero-container {
   padding: 0;
 }
 
-main .hero,
+.hero,
 main > div:has(h1):first-of-type {
   position: relative;
   padding: 32px;
   min-height: 300px;
-  aspect-ratio: 2.777;
+  aspect-ratio:  9/16; 
+}
+
+main > div:has(h1):first-of-type {
+  display: inline;
+}
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero-wrapper {
+  display: block !important;
+  aspect-ratio: unset!important;
+}
+
+main > div > div.hero {
+  aspect-ratio: unset!important;
+  
 }
 
 main .hero h1,

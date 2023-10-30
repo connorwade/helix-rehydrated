@@ -1,6 +1,8 @@
 // Paint major content
 // Attach styles
 // Push only what needs to be pushed
+document.querySelector("html").lang = "en";
+
 async function hydratePage() {
   const observer = new MutationObserver(async (mutations) => {
     for (let mutation of mutations) {
@@ -17,8 +19,9 @@ async function hydratePage() {
         // }
 
         if (
-          node.matches('img[loading="lazy"]') &&
-          elementOverlapsViewport(node)
+          (node.matches('img[loading="lazy"]') &&
+            elementOverlapsViewport(node)) ||
+          node.matches(".columns img")
         ) {
           node.removeAttribute("loading");
         }
@@ -50,7 +53,6 @@ async function hydratePage() {
 
         if (node.matches(".columns") && !node.dataset.rendered) {
           const { makeColumns } = await import("./blocks/Columns/Columns.js");
-          // loadCSS("/blocks/columns/columns.css");
           makeColumns(node);
         }
 
@@ -82,6 +84,32 @@ async function hydratePage() {
         if (node.matches("main > div")) {
           node.classList.add("section");
         }
+
+        if (node.matches("footer")) {
+          const { getHTML } = await import("./blocks/getHTML.js");
+          const { Footer } = await import("./blocks/Footer/footer.js");
+          await getHTML("/footer.plain.html", node, Footer);
+        }
+
+        if (node.matches("header")) {
+          const { getHTML } = await import("./blocks/getHTML.js");
+          const { Header } = await import("./blocks/Header/header.js");
+          await getHTML("/nav.plain.html", node, Header);
+          let icon = node.querySelector(".icon");
+          let img = Object.assign(document.createElement("img"), {
+            src: `src/static/icons/${icon.classList[1].split("-")[1]}.svg`,
+            width: `50px`,
+            alt: icon.classList[1].split("-")[1],
+          });
+          icon.append(img);
+        }
+
+        if (node.childNodes.length === 0 && node instanceof HTMLDivElement) {
+          node.remove();
+        }
+
+        if (node.matches(".icon")) {
+        }
       }
     }
   });
@@ -110,14 +138,6 @@ function elementOverlapsViewport(el) {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
-
-// function buildLCPBlock() {
-//   block.append(...[pic, h1]);
-//   wrapper.append(block);
-//   section.append(wrapper);
-
-//   parent.prepend(section);
-// }
 
 function createHTMLFromResponse(html) {
   let parser = new DOMParser();

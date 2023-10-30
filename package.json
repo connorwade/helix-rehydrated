@@ -9,6 +9,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "semantic-release": "semantic-release --debug",
     "build": "parcel build ./src/head.html --dist-dir public",
+    "watch": "parcel watch ./src/head.html --dist-dir public",
     "dev": "npm build && aem up"
   },
   "repository": {

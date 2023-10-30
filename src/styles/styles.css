@@ -266,17 +266,27 @@ main .section {
   }
 }
 
-@media (min-width: 900px) {
-  .section > div {
-    max-width: 1200px;
-    margin: auto;
-  }
-}
+
 
 
 main .section.highlight {
   background-color: var(--highlight-background-color);
 } */
+
+@media (min-width: 900px) {
+  .section > *{
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .section > p {
+    margin-bottom: 32px;
+  }
+
+  .section > h2 {
+    margin-bottom: 32px;
+  }
+}
 
 main > div {
   padding: 64px 16px;
@@ -293,7 +303,14 @@ main > div {
     max-width: 1200px;
     margin: auto;
   }
+
+  main > div:not(.hero) > * {
+  max-width: 1200px;
+  margin: auto;
 }
+}
+
+
 
 main > .section.highlight {
   background-color: var(--highlight-background-color);
@@ -302,3 +319,107 @@ main > .section.highlight {
 .section-metadata {
   display: none;
 }
+
+/*
+Footer
+*/
+
+footer {
+  padding: 2rem;
+  background-color: var(--overlay-background-color);
+  font-size: var(--body-font-size-s);
+  height: 85px;
+}
+
+footer:not(:scope > .footer) {
+  height: unset;
+}
+
+footer .footer {
+  max-width: 1200px;
+  margin: auto;
+}
+
+footer .footer p {
+  margin: 0;
+}
+
+/*Header*/
+
+header {
+  background-color: whitesmoke;
+  height: var(--nav-height)
+}
+
+nav {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  height: var(--nav-height);
+  
+  margin: auto;
+  max-width: 1264px;
+  height: var(--nav-height);
+  padding: 0 1rem;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+}
+
+nav div:first-of-type a {
+  font-size: var(--body-font-size-m);
+  color: black;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav > div > ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+nav > div > ul > li {
+  margin-left: 16px;
+  cursor: pointer;
+  transition-duration: 200ms;
+  position: relative;
+
+  &:hover {
+    color: grey;
+    text-decoration: underline;
+    display: inline;
+    /* border: 1px solid black; */
+  }
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  top: 100%;
+  left: 0%;
+  background: white;
+  z-index: 1;
+  border: 1px solid black;
+}
+
+nav ul > li > ul > li {
+  min-width: 200px;
+  padding: 2px 16px;
+}
+
+nav ul li:hover ul {
+  display: unset;
+}
+
+.icon-search {
+  cursor: pointer;
+  aspect-ratio: 1/1;
+}
+
+

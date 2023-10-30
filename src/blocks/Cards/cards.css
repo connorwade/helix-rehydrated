@@ -31,13 +31,19 @@
 }
 
 /* Loading Coverage */
-.cards:not([data-rendered]) > div {
+.cards:not(.block) {
   list-style: none;
-  margin: 0;
+  margin: auto;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 16px;
+}
+
+.cards.block {
+  display: block;
+  grid-template-columns: unset !important;
+  grid-gap: unset;
 }
 
 .cards:not([data-rendered]) > div > div img {
