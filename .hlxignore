@@ -7,5 +7,7 @@ package-lock.json
 test/*
 blocks-dev/*
 .parcel-cache/*
-/blocks/
-/node_modules/
+blocks/*
+node_modules/*
+src/*
+*.cjs

@@ -27,8 +27,8 @@ async function hydratePage() {
           !document.querySelector(".hero") &&
           node.matches("main > div:first-of-type")
         ) {
-          const { Block } = await import("../blocks-dev/Block.js");
-          const { createHero } = await import("../blocks-dev/Hero/Hero.js");
+          const { Block } = await import("./blocks/Block.js");
+          const { createHero } = await import("./blocks/Hero/Hero.js");
           const hero = new createHero(node);
           const block = new Block("hero", [hero]);
           block.prepend(node.parentElement, [
@@ -41,19 +41,16 @@ async function hydratePage() {
         }
 
         if (node.matches(".cards") && !node.dataset.rendered) {
-          const { Block } = await import("../blocks-dev/Block.js");
-          const { makeCards } = await import("../blocks-dev/Cards/Cards.js");
-          // loadCSS("/blocks-dev/cards/cards.css");
+          const { Block } = await import("./blocks/Block.js");
+          const { makeCards } = await import("./blocks/Cards/Cards.js");
           const cards = makeCards(node);
           const block = new Block("cards", [cards]);
           block.render(node);
         }
 
         if (node.matches(".columns") && !node.dataset.rendered) {
-          const { makeColumns } = await import(
-            "../blocks-dev/Columns/Columns.js"
-          );
-          // loadCSS("/blocks-dev/columns/columns.css");
+          const { makeColumns } = await import("./blocks/Columns/Columns.js");
+          // loadCSS("/blocks/columns/columns.css");
           makeColumns(node);
         }
 

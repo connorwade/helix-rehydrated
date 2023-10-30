@@ -123,6 +123,14 @@ export function makeCards(node) {
 - While mine might look "wordier", the render is significantly faster because we are doing string manipulation rather than creating nodes at runtime and manipulating them.
 - The side-effect is that developers feel a lot more organized with this.
 
+## Bundling (work in progress)
+
+- While I have installed parcel, there are a few issues that can't really be resolved at this time
+- We need to have our `.git` file and our `head.html` in the same directory. Why? Because `aem cli` works a little funky.
+- For some reason, nobody at Adobe thought it'd be a good idea to separate development from public code.
+- Currently, the best way to resolve this issue is to grab your `head.html` file and copy it from `public` to the parent directory and change the file paths.
+- If developing... I recommend just serving your development code. Parcel watch isn't going to work until we can work out how to copy head.html up
+
 ### What do I still need to do?
 - [ ] Resolve Static HTML fetching
 - [ ] Finish Block cleanup
