@@ -69,10 +69,6 @@ body {
   background-color: var(--background-color);
 }
 
-body.appear {
-  display: block;
-}
-
 header {
   height: var(--nav-height);
 }
@@ -422,4 +418,154 @@ nav ul li:hover ul {
   aspect-ratio: 1/1;
 }
 
+/*cards*/
+.cards > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 16px;
+}
 
+.cards > ul > li {
+  border: 1px solid var(--highlight-background-color);
+  background-color: var(--background-color);
+}
+
+.cards .cards-card-body {
+  margin: 16px;
+}
+
+.cards .cards-card-image {
+  line-height: 0;
+}
+
+.cards .cards-card-body > *:first-child {
+  margin-top: 0;
+}
+
+.cards > ul > li img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards:not(.block) {
+  list-style: none;
+  margin: auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 16px;
+}
+
+.cards.block {
+  display: block;
+  grid-template-columns: unset !important;
+  grid-gap: unset;
+}
+
+.cards:not([data-rendered]) > div > div img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* Hero */
+.hero,
+main > div:has(h1):first-of-type {
+  position: relative;
+  padding: 32px;
+  min-height: 300px;
+  aspect-ratio:  9/16; 
+}
+
+main > div:has(h1):first-of-type {
+  display: inline;
+  overflow: hidden;
+}
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero-wrapper {
+  display: block !important;
+  aspect-ratio: unset!important;
+}
+
+main > div > div.hero {
+  aspect-ratio: unset!important;
+  
+}
+
+main .hero h1,
+main p + h1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+main p + h1 {
+  position: absolute;
+  top: 0%;
+}
+
+main .hero picture,
+main > p picture {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+  aspect-ratio: 16/9;
+}
+
+main .hero img,
+main > p img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Columns */
+
+.columns > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns img {
+  width: 100%;
+}
+
+.columns > div > div {
+  order: 1;
+}
+
+.columns > div > .columns-img-col {
+  order: 0;
+}
+
+.columns > div > .columns-img-col img {
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .columns > div {
+    align-items: center;
+    flex-direction: unset;
+    gap: 32px;
+  }
+
+  .columns > div > div {
+    flex: 1;
+    order: unset;
+  }
+}
