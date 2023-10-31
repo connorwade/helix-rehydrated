@@ -34,6 +34,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Commit and push to stage
         run: |
           git config --local user.email "action@github.com"
