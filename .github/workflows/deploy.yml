@@ -24,8 +24,8 @@ jobs:
         run: npm install
       - name: Bundle
         run: npm run build
-      - name: Checkout
-        uses: actions/checkout@v3
+      # - name: Checkout
+      #   uses: actions/checkout@v3
       - name: Commit and push to stage
         run: |
           git config --local user.email "action@github.com"
