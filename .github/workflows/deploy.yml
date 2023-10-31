@@ -33,7 +33,9 @@ jobs:
           git checkout -b stage
           git add -f public/*
           git commit -m "Bundle and push to stage"
-          git push origin stage
+          git push -u origin stage
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
         # with:
         # path: . # The root location of your Astro project inside the repository. (optional)
