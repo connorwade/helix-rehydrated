@@ -1,0 +1,69 @@
+/* block specific CSS goes here */
+
+main .hero-container > div {
+  max-width: unset;
+}
+
+main .hero-container {
+  padding: 0;
+}
+
+.hero,
+main > div:has(h1):first-of-type {
+  position: relative;
+  padding: 32px;
+  min-height: 300px;
+  aspect-ratio:  9/16; 
+}
+
+main > div:has(h1):first-of-type {
+  display: inline;
+}
+
+.section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.hero-wrapper {
+  display: block !important;
+  aspect-ratio: unset!important;
+}
+
+main > div > div.hero {
+  aspect-ratio: unset!important;
+  
+}
+
+main .hero h1,
+main p + h1 {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+
+main p + h1 {
+  position: absolute;
+  top: 0%;
+}
+
+main .hero picture,
+main > p picture {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  object-fit: cover;
+  box-sizing: border-box;
+}
+
+main .hero img,
+main > p img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+

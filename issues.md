@@ -1,0 +1,3 @@
+- [x] After adding the section classes, there is a large CLS happening. May need to move sections up or something
+- [ ] We are now running too much JS before moving on
+- [ ] Accidentally reloading images...

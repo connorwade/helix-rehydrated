@@ -7,3 +7,12 @@ helix-importer-ui
 .DS_Store
 *.bak
 .idea
+
+/.parcel-cache/
+/dist/
+
+public/*.js
+public/*.map
+public/*.css
+public/*.woff2
+public/head.html
