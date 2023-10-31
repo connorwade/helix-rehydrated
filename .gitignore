@@ -15,4 +15,5 @@ public/*.js
 public/*.map
 public/*.css
 public/*.woff2
-public/head.html
+public/*.html
+pnpm-lock.yaml
