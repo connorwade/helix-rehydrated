@@ -19,15 +19,18 @@ async function hydratePage() {
         for (let node of mutation.addedNodes) {
           if (!(node instanceof HTMLElement)) continue;
 
-          if (node.matches('main') && !node.dataset.rendered) {
+          if (node.matches("main") && !node.dataset.rendered) {
             const { Main } = await import("./blocks/Main/Main.js");
             Main(node);
           }
-          if (node.matches('header') && !node.dataset.rendered) {
+          if (node.matches("header") && !node.dataset.rendered) {
             const { Header } = await import("./blocks/Header/Header.js");
             Header(node);
           }
-          if (node.matches("main > div:first-child > p:first-child") && !node.dataset.rendered) {
+          if (
+            node.matches("main > div:first-child > p:first-child") &&
+            !node.dataset.rendered
+          ) {
             const { Hero } = await import("./blocks/Hero/Hero.js");
             Hero(node);
           }
@@ -39,9 +42,13 @@ async function hydratePage() {
             const { Columns } = await import("./blocks/Columns/Columns.js");
             Columns(node);
           }
-          if (node.matches('footer') && !node.dataset.rendered) {
+          if (node.matches("footer") && !node.dataset.rendered) {
             const { Footer } = await import("./blocks/Footer/Footer.js");
             Footer(node);
+          }
+          if (node.matches(".section-metadata")) {
+            const { applyMetaData } = await import("./utils.js");
+            applyMetaData(node);
           }
           if (node.childNodes.length === 0 && node instanceof HTMLDivElement) {
             console.log("EMPTY NODES REMOVED");
