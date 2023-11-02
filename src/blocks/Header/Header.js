@@ -1,8 +1,16 @@
-import { makeSingle } from '../../utils';
-import template from './header.html';
+import { makeSingle } from "../../utils";
+import { getHTML } from "../getHTML";
+import template from "./header.html";
 
-export const Header = (node) => {
-  return makeSingle(node, template, () => ({
-    content: node.innerHTML,
-  }), 'header');
-}
+export const Header = async (node) => {
+  const html = await getHTML("/nav.plain.html");
+
+  return makeSingle(
+    node,
+    template,
+    () => ({
+      content: html,
+    }),
+    "header"
+  );
+};
