@@ -19,6 +19,10 @@ async function hydratePage() {
         for (let node of mutation.addedNodes) {
           if (!(node instanceof HTMLElement)) continue;
 
+          if (node.matches('main') && !node.dataset.rendered) {
+            const { Main } = await import("./blocks/Main/Main.js");
+            Main(node);
+          }
           if (node.matches('header') && !node.dataset.rendered) {
             const { Header } = await import("./blocks/Header/Header.js");
             Header(node);

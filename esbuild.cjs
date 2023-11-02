@@ -1,4 +1,5 @@
-import * as esbuild from 'esbuild'
+const esbuild = require('esbuild');
+const postCssPlugin = require('esbuild-style-plugin');
 
 esbuild.build({
   entryPoints: [
@@ -35,4 +36,11 @@ esbuild.build({
     '.woff': 'file',
     '.woff2': 'file',
   },
+  plugins: [
+    postCssPlugin({
+      postcss: {
+        plugins: [require('tailwindcss'), require('autoprefixer')],
+      }
+    }),
+  ],
 }).catch(() => process.exit(1));
