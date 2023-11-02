@@ -11,8 +11,5 @@ helix-importer-ui
 /.parcel-cache/
 /dist/
 
-public/*.js
-public/*.map
-public/*.css
-public/*.woff2
-public/head.html
+/public
+pnpm-lock.yaml

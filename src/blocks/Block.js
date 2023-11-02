@@ -3,7 +3,13 @@ export class Block {
   type = "";
 
   constructor(type, children) {
-    this.children = children.map((child) => child.render());
+    this.children = children.map((child) => {
+      if (child.render) {
+        return child.render();
+      } else {
+        return child();
+      }
+    });
     this.type = type;
     this.html = `${this.children.join("")}`;
   }
