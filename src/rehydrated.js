@@ -13,50 +13,48 @@ async function createLCP(node) {
 }
 
 async function hydratePage() {
-  const observer = new MutationObserver((mutations) => {
-    (async () => {
-      for (let mutation of mutations) {
-        for (let node of mutation.addedNodes) {
-          if (!(node instanceof HTMLElement)) continue;
+  const observer = new MutationObserver(async (mutations) => {
+    for (let mutation of mutations) {
+      for (let node of mutation.addedNodes) {
+        if (!(node instanceof HTMLElement)) continue;
 
-          if (node.matches("main") && !node.dataset.rendered) {
-            const { Main } = await import("./blocks/Main/Main.js");
-            Main(node);
-          }
-          if (node.matches("header") && !node.dataset.rendered) {
-            const { Header } = await import("./blocks/Header/Header.js");
-            Header(node);
-          }
-          if (
-            node.matches("main > div:first-child > p:first-child") &&
-            !node.dataset.rendered
-          ) {
-            const { Hero } = await import("./blocks/Hero/Hero.js");
-            Hero(node);
-          }
-          if (node.matches(".cards") && !node.dataset.rendered) {
-            const { Cards } = await import("./blocks/Cards/Cards.js");
-            Cards(node);
-          }
-          if (node.matches(".columns") && !node.dataset.rendered) {
-            const { Columns } = await import("./blocks/Columns/Columns.js");
-            Columns(node);
-          }
-          if (node.matches("footer") && !node.dataset.rendered) {
-            const { Footer } = await import("./blocks/Footer/Footer.js");
-            Footer(node);
-          }
-          if (node.matches(".section-metadata")) {
-            const { applyMetaData } = await import("./utils.js");
-            applyMetaData(node);
-          }
-          if (node.childNodes.length === 0 && node instanceof HTMLDivElement) {
-            console.log("EMPTY NODES REMOVED");
-            node.remove();
-          }
+        if (node.matches("main") && !node.dataset.rendered) {
+          const { Main } = await import("./blocks/Main/Main.js");
+          Main(node);
+        }
+        if (node.matches("header") && !node.dataset.rendered) {
+          const { Header } = await import("./blocks/Header/Header.js");
+          Header(node);
+        }
+        if (
+          node.matches("main > div:first-child > p:first-child") &&
+          !node.dataset.rendered
+        ) {
+          const { Hero } = await import("./blocks/Hero/Hero.js");
+          Hero(node);
+        }
+        if (node.matches(".cards") && !node.dataset.rendered) {
+          const { Cards } = await import("./blocks/Cards/Cards.js");
+          Cards(node);
+        }
+        if (node.matches(".columns") && !node.dataset.rendered) {
+          const { Columns } = await import("./blocks/Columns/Columns.js");
+          Columns(node);
+        }
+        if (node.matches("footer") && !node.dataset.rendered) {
+          const { Footer } = await import("./blocks/Footer/Footer.js");
+          Footer(node);
+        }
+        if (node.matches(".section-metadata")) {
+          const { applyMetaData } = await import("./utils.js");
+          applyMetaData(node);
+        }
+        if (node.childNodes.length === 0 && node instanceof HTMLDivElement) {
+          console.log("EMPTY NODES REMOVED");
+          node.remove();
         }
       }
-    })();
+    }
   });
 
   observer.observe(document, { childList: true, subtree: true });

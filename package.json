@@ -9,7 +9,8 @@
     "lint": "npm run lint:js && npm run lint:css",
     "semantic-release": "semantic-release --debug",
     "build": "node esbuild.cjs",
-    "dev": "node esbuild.cjs && aem up"
+    "dev": "node esbuild.cjs && aem up",
+    "watch": "node eswatch.cjs"
   },
   "repository": {
     "type": "git",

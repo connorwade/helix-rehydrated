@@ -9,3 +9,15 @@
 .highlight {
   @apply bg-slate-400;
 }
+
+body > header {
+  @apply min-h-[6rem] w-full;
+}
+
+header > header {
+  @apply flex items-center flex-row justify-between;
+}
+
+header > header > div:nth(1) {
+  
+}
