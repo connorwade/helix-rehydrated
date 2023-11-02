@@ -12,6 +12,9 @@ esbuild.build({
   splitting: true,
   outdir: './public',
   metafile: true,
+  loader: {
+    '.html': 'text',
+  },
 }).catch(() => process.exit(1))
 
 // esbuild styles

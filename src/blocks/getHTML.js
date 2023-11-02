@@ -2,7 +2,7 @@
  *
  * @param {string} path
  * @param {HTMLElement} node
- * @param {import("./Footer/footer").Footer | import("./Header/header").Header} elementClass
+ * @param {import("./Footer/Footer").Footer | import("./Header/Header").Header} elementClass
  */
 export async function getHTML(path, node, elementClass) {
   const res = await fetch(path);
