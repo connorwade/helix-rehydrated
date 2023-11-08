@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Header/header.html", "../src/blocks/Header/Header.js"],
+  "sourcesContent": ["<header class=\"header\">\n  ${content}\n</header>", "import { makeSingle } from \"../../utils\";\nimport { getHTML } from \"../getHTML\";\nimport template from \"./header.html\";\n\nexport const Header = async (node) => {\n  const html = await getHTML(\"/nav.plain.html\");\n\n  return makeSingle(\n    node,\n    template,\n    () => ({\n      content: html,\n    }),\n    \"header\"\n  );\n};\n"],
+  "mappings": "4GAAA,IAAAA,EAAA;AAAA;WCIO,IAAMC,EAAS,MAAOC,GAAS,CACpC,IAAMC,EAAO,MAAMC,EAAQ,iBAAiB,EAE5C,OAAOC,EACLH,EACAI,EACA,KAAO,CACL,QAASH,CACX,GACA,QACF,CACF",
+  "names": ["header_default", "Header", "node", "html", "getHTML", "makeSingle", "header_default"]
+}

@@ -2,6 +2,12 @@ const esbuild = require("esbuild");
 const postCssPlugin = require("esbuild-style-plugin");
 const sveltePlugin = require("esbuild-svelte");
 
+let outdir = "./public";
+
+if (process.argv.includes("--prod")) {
+  outdir = "./dist";
+}
+
 esbuild
   .build({
     entryPoints: ["./src/index.js"],
@@ -13,7 +19,7 @@ esbuild
     target: ["es2020"],
     format: "esm",
     splitting: true,
-    outdir: "./public",
+    outdir: outdir,
     metafile: true,
     loader: {
       ".html": "text",

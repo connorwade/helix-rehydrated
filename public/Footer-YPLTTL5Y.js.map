@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Footer/footer.html", "../src/blocks/Footer/Footer.js"],
+  "sourcesContent": ["<footer class=\"footer\">\n  ${content}\n</footer>", "import { makeSingle } from \"../../utils\";\nimport { getHTML } from \"../getHTML\";\nimport template from \"./footer.html\";\n\nexport const Footer = async (node) => {\n  const html = await getHTML(\"/footer.plain.html\");\n  return makeSingle(\n    node,\n    template,\n    () => ({\n      content: html,\n    }),\n    \"footer\"\n  );\n};\n"],
+  "mappings": "4GAAA,IAAAA,EAAA;AAAA;WCIO,IAAMC,EAAS,MAAOC,GAAS,CACpC,IAAMC,EAAO,MAAMC,EAAQ,oBAAoB,EAC/C,OAAOC,EACLH,EACAI,EACA,KAAO,CACL,QAASH,CACX,GACA,QACF,CACF",
+  "names": ["footer_default", "Footer", "node", "html", "getHTML", "makeSingle", "footer_default"]
+}

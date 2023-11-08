@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Main/Main.js"],
+  "sourcesContent": ["export const Main = (node) => {\n  node.classList.add('container');\n  node.classList.add('mx-auto');\n  node.classList.add('my-5');\n  node.classList.add('px-5');\n  node.classList.add('py-5');\n  node.classList.add('border');\n  node.classList.add('border-5');\n  node.classList.add('border-primary');\n  node.classList.add('rounded-3');\n  node.classList.add('bg-light');\n  node.classList.add('shadow-lg');\n}\n"],
+  "mappings": "4BAAO,IAAMA,EAAQC,GAAS,CAC5BA,EAAK,UAAU,IAAI,WAAW,EAC9BA,EAAK,UAAU,IAAI,SAAS,EAC5BA,EAAK,UAAU,IAAI,MAAM,EACzBA,EAAK,UAAU,IAAI,MAAM,EACzBA,EAAK,UAAU,IAAI,MAAM,EACzBA,EAAK,UAAU,IAAI,QAAQ,EAC3BA,EAAK,UAAU,IAAI,UAAU,EAC7BA,EAAK,UAAU,IAAI,gBAAgB,EACnCA,EAAK,UAAU,IAAI,WAAW,EAC9BA,EAAK,UAAU,IAAI,UAAU,EAC7BA,EAAK,UAAU,IAAI,WAAW,CAChC",
+  "names": ["Main", "node"]
+}

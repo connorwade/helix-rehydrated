@@ -11,5 +11,5 @@ helix-importer-ui
 /.parcel-cache/
 /dist/
 
-/public
+# /public
 pnpm-lock.yaml
