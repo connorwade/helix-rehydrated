@@ -10,14 +10,30 @@
   @apply bg-slate-400;
 }
 
-body > header {
-  @apply min-h-[6rem] w-full;
+header {
+  @apply min-h-[6rem] w-full border-b-black border-b px-3;
 }
 
-header > header {
+header {
   @apply flex items-center flex-row justify-between;
 }
 
-header > header > div:nth(1) {
-  
+header > div {
+  @apply flex-1;
+}
+
+header > div > p {
+  @apply text-3xl;
+}
+
+header div > ul {
+  @apply flex justify-between;
+}
+
+header div > ul > li {
+  @apply text-xl hover:underline hover:cursor-pointer;
+}
+
+header ul ul {
+  @apply hidden;
 }
