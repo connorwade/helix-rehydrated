@@ -1,5 +1,6 @@
 const esbuild = require("esbuild");
 const postCssPlugin = require("esbuild-style-plugin");
+const sveltePlugin = require("esbuild-svelte");
 
 esbuild
   .context({
@@ -8,6 +9,8 @@ esbuild
       "./src/styles/styles.css",
       "./src/styles/fonts.css",
     ],
+    mainFields: ["svelte", "browser", "module", "main"],
+    conditions: ["svelte", "browser"],
     bundle: true,
     sourcemap: true,
     target: ["es2020"],
@@ -25,6 +28,7 @@ esbuild
           plugins: [require("tailwindcss"), require("autoprefixer")],
         },
       }),
+      sveltePlugin(),
     ],
   })
   .then((ctx) => {

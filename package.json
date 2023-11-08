@@ -33,6 +33,7 @@
     "chai": "4.3.7",
     "esbuild": "^0.19.5",
     "esbuild-style-plugin": "^1.6.2",
+    "esbuild-svelte": "^0.8.0",
     "eslint": "8.35.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.27.5",
@@ -44,5 +45,8 @@
     "tailwindcss": "^3.3.5"
   },
   "type": "module",
-  "source": "src/index.js"
+  "source": "src/index.js",
+  "dependencies": {
+    "svelte": "^4.2.2"
+  }
 }

@@ -23,8 +23,10 @@ async function hydratePage() {
           Main(node);
         }
         if (node.matches("header") && !node.dataset.rendered) {
-          const { Header } = await import("./blocks/Header/Header.js");
-          Header(node);
+          // const { Header } = await import("./blocks/Header/Header.js");
+          // Header(node);
+          const { header } = await import("./blocks/Svelte-Header/Header.js");
+          node.dataset.rendered = "true";
         }
         if (
           node.matches("main > div:first-child > p:first-child") &&

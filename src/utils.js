@@ -75,3 +75,17 @@ export const applyMetaData = (node) => {
 
   node.remove();
 };
+
+const hydrationRegister = new Map();
+
+/**
+ *
+ * @param {Function} func
+ */
+export const registerFunction = async (func) => {
+  if (hydrationRegister.get(func.name)) {
+    return;
+  }
+
+  hydrationRegister.set(func.name, func);
+};
