@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/blocks/getHTML.js"],
-  "sourcesContent": ["/**\n *\n * @param {string} path\n * @param {HTMLElement} node\n * @param {import(\"./Footer/Footer\").Footer | import(\"./Header/Header\").Header} elementClass\n */\nexport async function getHTML(path) {\n  const res = await fetch(path);\n  if (res.ok) {\n    return await res.text();\n  }\n}\n"],
-  "mappings": "AAMA,eAAsBA,EAAQC,EAAM,CAClC,IAAMC,EAAM,MAAM,MAAMD,CAAI,EAC5B,GAAIC,EAAI,GACN,OAAO,MAAMA,EAAI,KAAK,CAE1B",
-  "names": ["getHTML", "path", "res"]
-}
