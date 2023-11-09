@@ -54,23 +54,28 @@
   }
 </script>
 
-<nav class="w-full flex flex-row justify-between items-baseline">
-  <div><a href="/" class="lg:text-4xl text-2xl">{logo}</a></div>
-  <div>
+<nav
+  class="h-full max-w-[1200px] flex flex-row justify-between items-center m-auto relative"
+>
+  <div class="">
     <button
       class="md:hidden"
       on:click={() => {
         showMobileDrawer = !showMobileDrawer;
-      }}>Menu</button
+      }}>{showMobileDrawer ? "Close" : "Menu"}</button
     >
   </div>
+  <div class="md:flex-1">
+    <a href="/" class="text-lg md:text-2xl font-bold">{logo}</a>
+  </div>
+
   <div
-    class="hidden md:flex-row md:justify-between lg:w-1/3 md:w-1/2 md:items-baseline md:flex relative"
+    class="hidden md:flex-row md:justify-between md:items-baseline md:flex relative"
   >
     {#each menus as menu, i}
-      <div class="relative">
+      <div class="relative px-3">
         <button
-          class="text-2xl"
+          class="text-lg hover:text-blue-700"
           class:underline={i === showSubmenu}
           on:click={() => {
             handleDropdownClick(i);
@@ -78,7 +83,7 @@
         >
         {#if showSubmenu === i}
           <ul
-            class="absolute flex flex-col w-[200%] bg-white top-full z-10 right-0 border-black border"
+            class="absolute flex flex-col w-[200%] bg-slate-200 top-full z-10 right-0 border-black border"
           >
             {#each menu.children as submenu}
               <li class="py-3 px-5 text-center">
@@ -92,13 +97,8 @@
   </div>
   <div
     class:hidden={!showMobileDrawer}
-    class="md:hidden p-2 fixed top-100 right-0 bg-white h-screen z-20 w-[75vw]"
+    class="md:hidden p-2 fixed top-[4rem] right-0 bg-white h-screen z-20 w-[100vw]"
   >
-    <button
-      on:click={() => {
-        showMobileDrawer = !showMobileDrawer;
-      }}>close</button
-    >
     {#each menus as menu, i}
       <div class="my-2">
         <button

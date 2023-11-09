@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+main {
+  @apply max-w-[1200px] mx-auto;
+}
+
+header {
+  @apply h-[4rem] w-full px-3 shadow-md;
+}
+
+h2 {
+  @apply text-2xl p-5 font-bold md:text-4xl;
+}
+
 .cards {
   @apply grid grid-cols-1 md:grid-cols-4 gap-4 mb-10;
 }
@@ -10,30 +22,82 @@
   @apply bg-slate-400;
 }
 
-header {
-  @apply min-h-[6rem] w-full border-b-black border-b px-3;
+.hero picture {
+  @apply -z-10 object-cover;
 }
 
-header {
-  @apply flex items-center flex-row justify-between;
+.hero img {
+  @apply w-full h-full object-cover;
 }
 
-header > div {
-  @apply flex-1;
+main > div > p {
+  @apply p-5;
 }
 
-header > div > p {
-  @apply text-3xl;
+.columns {
+  @apply p-5 md:py-5 md:px-0;
 }
 
-header div > ul {
-  @apply flex justify-between;
+.column {
+  @apply flex flex-col;
+  @apply md:flex-row;
 }
 
-header div > ul > li {
-  @apply text-xl hover:underline hover:cursor-pointer;
+.column > div {
+  @apply md:flex-1;
 }
 
-header ul ul {
-  @apply hidden;
+.column div:has(picture) {
+  @apply order-first md:order-none;
+}
+
+.column div:has(p) {
+  @apply order-last md:order-none md:flex md:flex-col md:justify-center;
+}
+
+.column div:has(p):nth-of-type(2) {
+  @apply items-end;
+}
+
+.column > div > p {
+  @apply text-lg font-bold py-3;
+}
+
+.column div > p a {
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: 2px solid transparent;
+  padding: 5px 30px;
+  text-align: center;
+  font-style: normal;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  background-color: blue;
+  margin: 16px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 30px;
+}
+
+.column div > p em a {
+  background-color: black;
+}
+
+.column li {
+  @apply list-disc ml-5;
+}
+
+.cards {
+  @apply px-5 py-5;
+}
+
+footer {
+  @apply pb-5 px-5 w-full;
+}
+
+footer > div {
+  @apply max-w-[1200px] mx-auto;
 }

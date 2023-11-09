@@ -5,4 +5,4 @@ export const Columns = (node) => {
   return makeMany(node, template, (col) => ({
     content: col.innerHTML,
   }));
-}
+};

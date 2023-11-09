@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Columns/column.html", "../src/blocks/Columns/Columns.js"],
+  "sourcesContent": ["<div class=\"column\">${content}</div>\n", "import { makeMany } from \"../../utils.js\";\nimport template from \"./column.html\";\n\nexport const Columns = (node) => {\n  return makeMany(node, template, (col) => ({\n    content: col.innerHTML,\n  }));\n};\n"],
+  "mappings": "oEAAA,IAAAA,EAAA,yCCGO,IAAMC,EAAWC,GACfC,EAASD,EAAME,EAAWC,IAAS,CACxC,QAASA,EAAI,SACf,EAAE",
+  "names": ["column_default", "Columns", "node", "makeMany", "column_default", "col"]
+}
