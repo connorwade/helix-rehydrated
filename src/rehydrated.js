@@ -34,6 +34,16 @@ async function hydratePage() {
         ) {
           const { Hero } = await import("./blocks/Hero/Hero.js");
           Hero(node);
+          /**
+           * @type {HTMLPictureElement}
+           */
+          const picture = node.querySelector(":scope > picture");
+          if (
+            picture.lastElementChild.hasAttribute("loading") &&
+            picture.lastElementChild.getAttribute("loading") === "lazy"
+          ) {
+            picture.lastElementChild.setAttribute("loading", "eager");
+          }
         }
         if (node.matches(".cards") && !node.dataset.rendered) {
           const { Cards } = await import("./blocks/Cards/Cards.js");
