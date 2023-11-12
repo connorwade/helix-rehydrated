@@ -1,2 +1,0 @@
-import"./chunk-GQSCBKA6.js";var a=s=>{s.classList.add("container"),s.classList.add("mx-auto"),s.classList.add("my-5"),s.classList.add("px-5"),s.classList.add("py-5"),s.classList.add("border"),s.classList.add("border-5"),s.classList.add("border-primary"),s.classList.add("rounded-3"),s.classList.add("bg-light"),s.classList.add("shadow-lg")};export{a as Main};
-//# sourceMappingURL=Main-YQNCXKBY.js.map

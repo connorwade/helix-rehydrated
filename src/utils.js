@@ -62,8 +62,8 @@ export const applyMetaData = (node) => {
   const parent = node.parentElement;
 
   for (const block of [...node.children]) {
-    const key = block.children[0].innerText;
-    const val = block.children[1].innerText;
+    const key = block.firstElementChild.innerText;
+    const val = block.lastElementChild.innerText;
     switch (key.toLowerCase()) {
       case "style":
         parent.classList.add(val);
@@ -74,18 +74,4 @@ export const applyMetaData = (node) => {
   }
 
   node.remove();
-};
-
-const hydrationRegister = new Map();
-
-/**
- *
- * @param {Function} func
- */
-export const registerFunction = async (func) => {
-  if (hydrationRegister.get(func.name)) {
-    return;
-  }
-
-  hydrationRegister.set(func.name, func);
 };

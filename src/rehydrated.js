@@ -1,17 +1,5 @@
 document.querySelector("html").lang = "en";
 
-async function createLCP(node) {
-  const { Block } = await import("./blocks/Block.js");
-  const { createHero } = await import("./blocks/Hero/Hero.js");
-  const { hero, picture } = new createHero(node);
-  const block = new Block("hero", [hero]);
-  block.prepend(node.parentElement, picture, [
-    node.firstElementChild,
-    node.firstElementChild.nextElementSibling,
-  ]);
-  document.querySelector(".hero-wrapper").classList.add("hero-container");
-}
-
 async function hydratePage() {
   const observer = new MutationObserver(async (mutations) => {
     for (let mutation of mutations) {
@@ -64,7 +52,7 @@ async function hydratePage() {
 
 hydratePage();
 
-function loadCSS(script) {
+async function loadCSS(script) {
   const link = Object.assign(document.createElement("link"), {
     rel: "stylesheet",
     type: "text/css",

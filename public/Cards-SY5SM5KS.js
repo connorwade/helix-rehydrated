@@ -1,4 +1,4 @@
-import{a as e,e as i}from"./chunk-YPXNN4AR.js";import"./chunk-GQSCBKA6.js";var r=`<div
+import{a as e,e as i}from"./chunk-EWXMAN3I.js";import"./chunk-GQSCBKA6.js";var r=`<div
   class="card bg-white overflow-hidden shadow rounded-lg flex flex-col justify-center items-center"
 >
   <div class="image-wrapper h-full">\${img}</div>
@@ -8,4 +8,4 @@ import{a as e,e as i}from"./chunk-YPXNN4AR.js";import"./chunk-GQSCBKA6.js";var r
   </div>
 </div>
 `;var n=o=>i(o,r,t=>({title:e(t,"p:nth-of-type(1)"),description:e(t,"p:nth-of-type(2)"),img:t.querySelector("picture").outerHTML}));export{n as Cards};
-//# sourceMappingURL=Cards-SU434KDS.js.map
+//# sourceMappingURL=Cards-SY5SM5KS.js.map
