@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Cards/card.html", "../src/blocks/Cards/Cards.js"],
+  "sourcesContent": ["<div\n  class=\"card bg-white overflow-hidden shadow rounded-lg flex flex-col justify-center items-center\"\n>\n  <div class=\"image-wrapper h-full\">${img}</div>\n  <div class=\"card-content px-4 py-8\">\n    <h3 class=\"text-2xl font-bold mb-4\">${title}</h3>\n    <p>${description}</p>\n  </div>\n</div>\n", "import template from \"./card.html\";\nimport { getData, makeMany } from \"../../utils\";\n\nexport const render = (node) => {\n  const Card = (card) => ({\n    title: getData(card, \"p:nth-of-type(1)\"),\n    description: getData(card, \"p:nth-of-type(2)\"),\n    img: card.querySelector(\"picture\").outerHTML,\n  });\n\n  return makeMany(node, template, Card);\n};\n"],
+  "mappings": ";;;;;;;AAAA;;;ACGO,IAAM,SAAS,CAAC,SAAS;AAC9B,QAAM,OAAO,CAAC,UAAU;AAAA,IACtB,OAAO,QAAQ,MAAM,kBAAkB;AAAA,IACvC,aAAa,QAAQ,MAAM,kBAAkB;AAAA,IAC7C,KAAK,KAAK,cAAc,SAAS,EAAE;AAAA,EACrC;AAEA,SAAO,SAAS,MAAM,cAAU,IAAI;AACtC;",
+  "names": []
+}

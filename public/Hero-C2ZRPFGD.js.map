@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Hero/hero.html", "../src/blocks/Hero/Hero.js"],
+  "sourcesContent": ["<div class=\"hero relative min-h-[300px]\">\n  <div class=\"image-wrapper absolute top-0 left-0 right-0 bottom-0 -z-10\">\n    ${img}\n  </div>\n  <div class=\"hero-content absolute top-1/4 left-5 md:left-[20%]\">\n    <h1 class=\"text-white text-4xl font-bold leading-10\">${title}</h1>\n  </div>\n</div>\n", "import template from \"./hero.html\";\nimport { fromManyMakeSingle } from \"../../utils\";\n\nexport const render = (node) => {\n  const title = node.nextElementSibling;\n  /**\n   * @type {HTMLPictureElement}\n   */\n  const picture = node.querySelector(\":scope > picture\");\n  if (\n    picture.lastElementChild.hasAttribute(\"loading\") &&\n    picture.lastElementChild.getAttribute(\"loading\") === \"lazy\"\n  ) {\n    picture.lastElementChild.setAttribute(\"loading\", \"eager\");\n  }\n\n  return fromManyMakeSingle([node, title, picture], template, (nodes) => ({\n    title: nodes[1].textContent,\n    id: nodes[1].id,\n    img: nodes[2].outerHTML,\n  }));\n};\n"],
+  "mappings": ";;;;;;AAAA;;;ACGO,IAAM,SAAS,CAAC,SAAS;AAC9B,QAAM,QAAQ,KAAK;AAInB,QAAM,UAAU,KAAK,cAAc,kBAAkB;AACrD,MACE,QAAQ,iBAAiB,aAAa,SAAS,KAC/C,QAAQ,iBAAiB,aAAa,SAAS,MAAM,QACrD;AACA,YAAQ,iBAAiB,aAAa,WAAW,OAAO;AAAA,EAC1D;AAEA,SAAO,mBAAmB,CAAC,MAAM,OAAO,OAAO,GAAG,cAAU,CAAC,WAAW;AAAA,IACtE,OAAO,MAAM,CAAC,EAAE;AAAA,IAChB,IAAI,MAAM,CAAC,EAAE;AAAA,IACb,KAAK,MAAM,CAAC,EAAE;AAAA,EAChB,EAAE;AACJ;",
+  "names": []
+}

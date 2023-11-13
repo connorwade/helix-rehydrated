@@ -8,7 +8,7 @@ esbuild
   .build({
     entryPoints: ["./src/index.js", "./src/styles/styles.css"],
     bundle: true,
-    minify: true,
+    // minify: true,
     mainFields: ["svelte", "browser", "module", "main"],
     conditions: ["svelte", "browser"],
     sourcemap: true,
@@ -21,7 +21,9 @@ esbuild
       ".html": "text",
     },
     plugins: [
-      sveltePlugin(),
+      sveltePlugin({
+        compilerOptions: { css: "injected" },
+      }),
       postCssPlugin({
         postcss: {
           plugins: [require("tailwindcss"), require("autoprefixer")],

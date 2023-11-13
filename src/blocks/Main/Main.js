@@ -1,4 +1,4 @@
-export const Main = (node) => {
+export const render = (node) => {
   // node.classList.add('container');
   // node.classList.add('mx-auto');
   // node.classList.add('my-5');

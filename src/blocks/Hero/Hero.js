@@ -1,7 +1,7 @@
 import template from "./hero.html";
 import { fromManyMakeSingle } from "../../utils";
 
-export const Hero = (node) => {
+export const render = (node) => {
   const title = node.nextElementSibling;
   /**
    * @type {HTMLPictureElement}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/getHTML.js", "../src/blocks/Footer/Footer.js"],
+  "sourcesContent": ["/**\n *\n * @param {string} path\n * @param {HTMLElement} node\n * @param {import(\"./Footer/Footer\").Footer | import(\"./Header/Header\").Header} elementClass\n */\nexport async function getHTML(path) {\n  const res = await fetch(path);\n  if (res.ok) {\n    return await res.text();\n  }\n}\n", "import { swapNode } from \"../../utils\";\nimport { getHTML } from \"../getHTML\";\nimport template from \"./footer.html\";\n\nexport const render = async (node) => {\n  const html = await getHTML(\"/footer.plain.html\");\n  swapNode(node, html, \"footer\");\n};\n"],
+  "mappings": ";;;;;;AAMA,eAAsB,QAAQ,MAAM;AAClC,QAAM,MAAM,MAAM,MAAM,IAAI;AAC5B,MAAI,IAAI,IAAI;AACV,WAAO,MAAM,IAAI,KAAK;AAAA,EACxB;AACF;;;ACPO,IAAM,SAAS,OAAO,SAAS;AACpC,QAAM,OAAO,MAAM,QAAQ,oBAAoB;AAC/C,WAAS,MAAM,MAAM,QAAQ;AAC/B;",
+  "names": []
+}

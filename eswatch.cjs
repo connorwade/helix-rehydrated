@@ -4,11 +4,7 @@ const sveltePlugin = require("esbuild-svelte");
 
 esbuild
   .context({
-    entryPoints: [
-      "./src/index.js",
-      "./src/styles/styles.css",
-      "./src/styles/fonts.css",
-    ],
+    entryPoints: ["./src/index.js", "./src/styles/styles.css"],
     mainFields: ["svelte", "browser", "module", "main"],
     conditions: ["svelte", "browser"],
     bundle: true,

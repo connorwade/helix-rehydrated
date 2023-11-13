@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/blocks/Columns/column.html", "../src/blocks/Columns/Columns.js"],
+  "sourcesContent": ["<div class=\"column\">${content}</div>\n", "import { makeMany } from \"../../utils.js\";\nimport template from \"./column.html\";\n\nexport const render = (node) => {\n  return makeMany(node, template, (col) => ({\n    content: col.innerHTML,\n  }));\n};\n"],
+  "mappings": ";;;;;;AAAA;;;ACGO,IAAM,SAAS,CAAC,SAAS;AAC9B,SAAO,SAAS,MAAM,gBAAU,CAAC,SAAS;AAAA,IACxC,SAAS,IAAI;AAAA,EACf,EAAE;AACJ;",
+  "names": []
+}

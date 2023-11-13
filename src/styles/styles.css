@@ -22,11 +22,11 @@ h2 {
   @apply bg-slate-400;
 }
 
-.hero picture {
+picture:first-of-type {
   @apply -z-10 object-cover;
 }
 
-.hero img {
+img:first-of-type {
   @apply w-full h-full object-cover;
 }
 
